@@ -9,3 +9,6 @@ route::get('/login', function () {
 route::get('/sistem', function () {
     return view('page.firstpage');
 });
+route::get('/detail', function () {
+    return view('page.detail_tower');
+});

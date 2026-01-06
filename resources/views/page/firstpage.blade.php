@@ -15,7 +15,7 @@
     <div class="brand">
         <img src="{{(asset('storage/assets/images/logo.png'))}}" alt="">
         <span class="brand-text">
-            UPT Bekasi
+             UPT Bekasi
         </span>
 
         
@@ -32,7 +32,7 @@
 <!-- HEADER -->
 <header class="header">
     <div class="header-content">
-        <h1>Monitoring Tower PLN</h1>
+        <h1>Monitoring Sertifikasi Tower PLN UPT Bekasi</h1>
         <p>Sistem Informasi Pendataan dan Monitoring Tower</p>
     </div>
 </header>
@@ -43,7 +43,7 @@
     <!-- TITLE -->
     <div class="content-header">
         <h2>Data Tower</h2>
-        <span>Monitoring & Pendataan Tower PLN</span>
+        <span>Monitoring & Pendataan Tower PLN UPT Bekasi</span>
     </div>
 
     <!-- SEARCH & FILTER -->
@@ -78,12 +78,12 @@
              data-name="Tower {{ $i }}"
              data-jenis="SUTT"
              data-wilayah="Bekasi"
-             data-status="{{ $i % 2 == 0 ? 'Aktif' : 'Nonaktif' }}">
+                data-status="{{ $i % 2 == 0 ? 'Aktif' : 'Nonaktif' }}">
             <div class="card-img"></div>
             <div class="card-body">
                 <h4>Tower {{ $i }}</h4>
                 <span>Bekasi</span>
-                <small>Status: {{ $i % 2 == 0 ? 'Aktif' : 'Nonaktif' }}</small>
+                <small>Status: {{ $i % 2 == 0 ? 'sertifikasi' : 'Belum Sertifikasi' }}</small>
             </div>
         </div>
         @endfor
