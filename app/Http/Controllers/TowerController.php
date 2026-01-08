@@ -63,19 +63,14 @@ class TowerController extends Controller
             'lokasi' => 'required',
             'status_sertifikat' => 'required|in:bersertifikat,belum',
             'luas' => 'nullable|numeric',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
-            'kelurahan' => 'required',
-            'kecamatan' => 'required',
-            'city' => 'required',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'kelurahan' => 'nullable',
+            'kecamatan' => 'nullable',
+            'city' => 'nullable',
             'tgl_awal' => 'nullable|date',
             'tgl_akhir' => 'nullable|date',
-            'foto' => 'nullable|image|max:2048',
         ]);
-
-        if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('tower', 'public');
-        }
 
         Tower::create($validated);
 
@@ -96,30 +91,16 @@ class TowerController extends Controller
             'lokasi' => 'required',
             'status_sertifikat' => 'required|in:bersertifikat,belum',
             'luas' => 'nullable',
-            'latitude_y' => 'required',
-            'longitude_x' => 'required',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
             'no_surat' => 'nullable',
             'no_sertipikat' => 'nullable',
-            'kelurahan' => 'required',
-            'kecamatan' => 'required',
-            'city' => 'required',
+            'kelurahan' => 'nullable',
+            'kecamatan' => 'nullable',
+            'city' => 'nullable',
             'tgl_awal' => 'nullable|date',
             'tgl_akhir' => 'nullable|date',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
-
-        if ($request->hasFile('foto')) {
-            // Hapus foto lama jika ada
-            if ($tower->foto && file_exists(storage_path('app/public/tower/' . $tower->foto))) {
-                unlink(storage_path('app/public/tower/' . $tower->foto));
-            }
-
-            $file = $request->file('foto');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/tower', $filename);
-
-            $data['foto'] = $filename;
-        }
 
         $tower->update($request->all());
 

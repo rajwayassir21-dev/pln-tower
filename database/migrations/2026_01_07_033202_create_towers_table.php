@@ -34,7 +34,6 @@ return new class extends Migration
             $table->date('tgl_awal')->nullable();
             $table->date('tgl_akhir')->nullable();
 
-            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

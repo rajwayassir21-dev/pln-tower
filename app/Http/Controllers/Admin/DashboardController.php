@@ -14,12 +14,14 @@ class DashboardController extends Controller
         $towerBersertifikat = Tower::where('status_sertifikat', 'bersertifikat')->count();
         $towerBelum = Tower::where('status_sertifikat', 'belum')->count();
         $towers = Tower::latest()->paginate(12);
+        $towerCount = Tower::count();
 
         return view('admin.dashboard', compact(
             'userCount',
             'towerBersertifikat',
             'towerBelum',
-            'towers'
+            'towers',
+            'towerCount'
         ));
     }
 }

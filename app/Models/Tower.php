@@ -20,6 +20,5 @@ class Tower extends Model
         'city',
         'tgl_awal',
         'tgl_akhir',
-        'foto',
     ];
 }

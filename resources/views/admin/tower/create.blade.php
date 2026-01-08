@@ -390,8 +390,7 @@
                                                             <div class="invalid-feedback d-block">{{ $message }}
                                                             </div>
                                                         @enderror
-                                                        <span class="input-hint">Contoh: Tower PLN Gardu Induk
-                                                            Jatibarang</span>
+                                                        <span class="input-hint">Contoh: TRS 150kV GANDAMEKAR-CIKARANG 003</span>
                                                     </div>
                                                 </div>
 
@@ -624,28 +623,6 @@
                                                             </div>
                                                         @enderror
                                                         <span class="input-hint">Tanggal berakhir (optional)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group-row">
-                                                    <label for="foto" class="form-label-pln">Foto</label>
-
-                                                    <input type="file" name="foto" id="foto"
-                                                        accept="image/*"
-                                                        class="form-control-pln @error('foto') is-invalid @enderror">
-
-                                                    @error('foto')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                    @enderror
-
-                                                    <span class="input-hint">Foto Tower (optional)</span>
-
-                                                    {{-- PREVIEW --}}
-                                                    <div class="mt-2">
-                                                        <img id="previewFoto" src="#" alt="Preview Foto"
-                                                            style="display:none; max-width:100%; height:150px; object-fit:cover; border-radius:6px;">
                                                     </div>
                                                 </div>
                                             </div>

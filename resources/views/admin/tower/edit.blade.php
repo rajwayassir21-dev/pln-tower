@@ -472,8 +472,8 @@
                                                             <div class="invalid-feedback d-block">{{ $message }}
                                                             </div>
                                                         @enderror
-                                                        <span class="input-hint">Contoh: Tower PLN Gardu Induk
-                                                            Jatibarang</span>
+                                                        <span class="input-hint">Contoh: TRS 150kV GANDAMEKAR-CIKARANG
+                                                            003</span>
                                                     </div>
                                                 </div>
 
@@ -544,14 +544,14 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group-row">
-                                                        <label for="latitude_y"
+                                                        <label for="latitude"
                                                             class="form-label-pln form-label-required">Latitude
                                                             (Y)</label>
-                                                        <input type="text" name="latitude_y" id="latitude_y"
-                                                            class="form-control-pln coordinate-input @error('latitude_y') is-invalid @enderror"
-                                                            required value="{{ old('latitude_y', $tower->latitude) }}"
+                                                        <input type="text" name="latitude" id="latitude"
+                                                            class="form-control-pln coordinate-input @error('latitude') is-invalid @enderror"
+                                                            value="{{ old('latitude', $tower->latitude) }}"
                                                             placeholder="Contoh: -6.2088">
-                                                        @error('latitude_y')
+                                                        @error('latitude')
                                                             <div class="invalid-feedback d-block">{{ $message }}
                                                             </div>
                                                         @enderror
@@ -562,15 +562,14 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group-row">
-                                                        <label for="longitude_x"
+                                                        <label for="longitude"
                                                             class="form-label-pln form-label-required">Longitude
                                                             (X)</label>
-                                                        <input type="text" name="longitude_x" id="longitude_x"
-                                                            class="form-control-pln coordinate-input @error('longitude_x') is-invalid @enderror"
-                                                            required
-                                                            value="{{ old('longitude_x', $tower->longitude) }}"
+                                                        <input type="text" name="longitude" id="longitude"
+                                                            class="form-control-pln coordinate-input @error('longitude') is-invalid @enderror"
+                                                            value="{{ old('longitude', $tower->longitude) }}"
                                                             placeholder="Contoh: 106.8456">
-                                                        @error('longitude_x')
+                                                        @error('longitude')
                                                             <div class="invalid-feedback d-block">{{ $message }}
                                                             </div>
                                                         @enderror
@@ -633,7 +632,7 @@
                                                             class="form-label-pln form-label-required">Kelurahan</label>
                                                         <input type="text" name="kelurahan" id="kelurahan"
                                                             class="form-control-pln @error('kelurahan') is-invalid @enderror"
-                                                            required value="{{ old('kelurahan', $tower->kelurahan) }}"
+                                                            value="{{ old('kelurahan', $tower->kelurahan) }}"
                                                             placeholder="Nama kelurahan">
                                                         @error('kelurahan')
                                                             <div class="invalid-feedback d-block">{{ $message }}
@@ -648,7 +647,7 @@
                                                             class="form-label-pln form-label-required">Kecamatan</label>
                                                         <input type="text" name="kecamatan" id="kecamatan"
                                                             class="form-control-pln @error('kecamatan') is-invalid @enderror"
-                                                            required value="{{ old('kecamatan', $tower->kecamatan) }}"
+                                                            value="{{ old('kecamatan', $tower->kecamatan) }}"
                                                             placeholder="Nama kecamatan">
                                                         @error('kecamatan')
                                                             <div class="invalid-feedback d-block">{{ $message }}
@@ -663,7 +662,7 @@
                                                             class="form-label-pln form-label-required">Kota/Kabupaten</label>
                                                         <input type="text" name="city" id="city"
                                                             class="form-control-pln @error('city') is-invalid @enderror"
-                                                            required value="{{ old('city', $tower->city) }}"
+                                                            value="{{ old('city', $tower->city) }}"
                                                             placeholder="Nama kota/kabupaten">
                                                         @error('city')
                                                             <div class="invalid-feedback d-block">{{ $message }}
@@ -708,41 +707,6 @@
                                                             </div>
                                                         @enderror
                                                         <span class="input-hint">Tanggal berakhir (optional)</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group-row">
-                                                        <label for="foto" class="form-label-pln">Foto</label>
-
-                                                        {{-- FOTO LAMA --}}
-                                                        @if ($tower->foto)
-                                                            <div class="mb-2">
-                                                                <small>Foto saat ini:</small><br>
-                                                                <img src="{{ asset('storage/tower/' . $tower->foto) }}"
-                                                                    alt="Foto Tower"
-                                                                    style="max-width:100%; height:150px; object-fit:cover; border-radius:6px;">
-                                                            </div>
-                                                        @endif
-
-                                                        {{-- INPUT FOTO BARU --}}
-                                                        <input type="file" name="foto" id="foto"
-                                                            accept="image/*" onchange="previewFoto(event)"
-                                                            class="form-control-pln @error('foto') is-invalid @enderror">
-
-                                                        @error('foto')
-                                                            <div class="invalid-feedback d-block">{{ $message }}
-                                                            </div>
-                                                        @enderror
-
-                                                        <span class="input-hint">Upload foto baru (opsional)</span>
-
-                                                        {{-- PREVIEW FOTO BARU --}}
-                                                        <div class="mt-2">
-                                                            <small>Preview foto baru:</small><br>
-                                                            <img id="previewFoto"
-                                                                style="display:none; max-width:100%; height:150px; object-fit:cover; border-radius:6px;">
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -828,7 +792,6 @@
             $('#towerForm').submit(function(e) {
                 const requiredFields = [
                     'description', 'lokasi', 'status_sertifikat',
-                    'latitude_y', 'longitude_x', 'kelurahan', 'kecamatan', 'city'
                 ];
 
                 let isValid = true;
@@ -857,13 +820,24 @@
                 }
 
                 // Validasi format koordinat
-                const latitude = $('#latitude_y').val().trim();
-                const longitude = $('#longitude_x').val().trim();
+                const latitude = $('#latitude').val().trim();
+                const longitude = $('#longitude').val().trim();
 
-                if (isNaN(parseFloat(latitude)) || isNaN(parseFloat(longitude))) {
+                // kalau dua-duanya kosong → lolos
+                if (latitude === '' && longitude === '') {
+                    return true;
+                }
+
+                // kalau salah satu diisi, keduanya wajib angka
+                if (
+                    latitude === '' ||
+                    longitude === '' ||
+                    isNaN(parseFloat(latitude)) ||
+                    isNaN(parseFloat(longitude))
+                ) {
                     e.preventDefault();
-                    alert('Latitude dan Longitude harus berupa angka!');
-                    $('#latitude_y').focus();
+                    alert('Latitude dan Longitude harus diisi dengan angka yang valid.');
+                    $('#latitude').focus();
                     return false;
                 }
 
@@ -878,8 +852,8 @@
                     $('#lokasi').val('{{ $tower->lokasi }}');
                     $('#status_sertifikat').val('{{ $tower->status_sertifikat }}');
                     $('#luas').val('{{ $tower->luas }}');
-                    $('#latitude_y').val('{{ $tower->latitude_y }}');
-                    $('#longitude_x').val('{{ $tower->longitude_x }}');
+                    $('#latitude').val('{{ $tower->latitude }}');
+                    $('#longitude').val('{{ $tower->longitude }}');
                     $('#no_surat').val('{{ $tower->no_surat }}');
                     $('#no_sertipikat').val('{{ $tower->no_sertipikat }}');
                     $('#kelurahan').val('{{ $tower->kelurahan }}');
@@ -936,12 +910,6 @@
                 }
             });
         });
-
-        function previewFoto(event) {
-            const img = document.getElementById('previewFoto');
-            img.src = URL.createObjectURL(event.target.files[0]);
-            img.style.display = 'block';
-        }
     </script>
 
 </body>

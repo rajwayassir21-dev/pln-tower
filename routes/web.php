@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthRedirectController;
 use App\Http\Controllers\TowerController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\TowerController as UserTowerController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
@@ -48,6 +49,12 @@ Route::middleware('auth')->get('/redirect', function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/dashboard', [UserDashboardController::class, 'index'])
         ->name('user.dashboard');
+
+    Route::get('/user/dashboard', [App\Http\Controllers\User\TowerController::class, 'index'])
+        ->name('user.dashboard');
+
+    Route::get('/user/towers/{id}', [UserTowerController::class, 'show'])
+        ->name('tower_detail');
 });
 
 Route::middleware(['auth', 'role:admin'])
